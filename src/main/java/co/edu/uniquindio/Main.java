@@ -21,6 +21,12 @@ public class Main {
 
 
 
+        String saludo= "HOLA MUNDO";
+        String saludo2=saludo.toLowerCase();
+        System.out.println(saludo);
+        System.out.println(saludo2);
+
+
       
     }
 }
