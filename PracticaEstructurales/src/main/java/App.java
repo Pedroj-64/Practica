@@ -1,3 +1,4 @@
+import decorator.*;
 import modelBridge.*;
 import modelReproductor.*;
 
@@ -9,6 +10,10 @@ public class App {
         reproducirMusica();
         reporteVentas.generarReporte("Reporte_Ventas.csv");
         reporteInventario.generarReporte("Reporte_Inventario.xlsx");
+        System.out.println("Detalles del jugador:");
+        jugadorBase.detellesEquipo();
+        System.out.println("Detalles del jugador con armadura y arma:");
+        jugadorConArmaduraYArma.detellesEquipo();
     }
 
 
@@ -32,6 +37,12 @@ public class App {
     static Reporte reporteVentas= new Ventas(csv);
     static Reporte reporteInventario= new Inventario(excel);
 
+
+    //IMPLEMENTACION DE DECORATOR
+
+    static IJugador jugador = new JugadorBase();
+    static JugadorDecorator jugadorBase= new JugadorConArmadura(jugador);
+    static JugadorDecorator jugadorConArmaduraYArma= new JugadorConEspada(jugadorBase);
 
 
 }
