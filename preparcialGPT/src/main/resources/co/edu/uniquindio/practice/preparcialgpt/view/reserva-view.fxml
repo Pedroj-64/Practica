@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="co.edu.uniquindio.practice.preparcialgpt.controller.ReservaController">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <children>
+      <Label text="Nueva Reserva" style="-fx-font-weight: bold;">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      
+      <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+         <tabs>
+            <Tab text="Reserva Rápida">
+               <content>
+                  <VBox spacing="15.0">
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                     <children>
+                        <HBox spacing="10.0">
+                           <children>
+                              <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label text="Cliente" />
+                                    <ComboBox fx:id="cbCliente" promptText="Seleccione un cliente" VBox.vgrow="ALWAYS" maxWidth="Infinity" />
+                                 </children>
+                              </VBox>
+                              <Button fx:id="btnNuevoCliente" mnemonicParsing="false" onAction="#mostrarFormularioNuevoCliente" text="Nuevo Cliente" />
+                           </children>
+                        </HBox>
+                        
+                        <GridPane hgap="10.0" vgap="10.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <VBox spacing="5.0">
+                                 <children>
+                                    <Label text="Servicio" />
+                                    <ComboBox fx:id="cbServicio" promptText="Seleccione un servicio" maxWidth="Infinity" />
+                                 </children>
+                              </VBox>
+                              
+                              <VBox spacing="5.0" GridPane.columnIndex="1">
+                                 <children>
+                                    <Label text="Fecha" />
+                                    <DatePicker fx:id="dateFecha" maxWidth="Infinity" />
+                                 </children>
+                              </VBox>
+                              
+                              <VBox spacing="5.0" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label text="Horario" />
+                                    <ComboBox fx:id="cbHorario" promptText="Seleccione un horario" maxWidth="Infinity" />
+                                 </children>
+                              </VBox>
+                              
+                              <VBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label text="Método de Pago" />
+                                    <ComboBox fx:id="cbMetodoPago" promptText="Seleccione método de pago" maxWidth="Infinity" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </GridPane>
+                        
+                        <Separator />
+                        
+                        <VBox spacing="10.0">
+                           <children>
+                              <Label text="Servicios Adicionales" style="-fx-font-weight: bold;" />
+                              <HBox spacing="15.0">
+                                 <children>
+                                    <CheckBox fx:id="chkToalla" mnemonicParsing="false" text="Servicio de Toalla" />
+                                    <CheckBox fx:id="chkLockerPremium" mnemonicParsing="false" text="Locker Premium" />
+                                    <CheckBox fx:id="chkBebida" mnemonicParsing="false" text="Bebida de Cortesía" />
+                                    <CheckBox fx:id="chkEntrenador" mnemonicParsing="false" text="Entrenador Personal" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label text="Resumen de la Reserva" style="-fx-font-weight: bold;" />
+                              <GridPane hgap="10.0" vgap="5.0" style="-fx-background-color: #F5F5F5; -fx-background-radius: 5;">
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="150.0" prefWidth="150.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label text="Servicio base:" />
+                                    <Label text="Servicios adicionales:" GridPane.rowIndex="1" />
+                                    <Label text="Subtotal:" GridPane.rowIndex="2" />
+                                    <Label text="Total:" style="-fx-font-weight: bold;" GridPane.rowIndex="3" />
+                                    
+                                    <Label fx:id="lblServicioBase" text="" GridPane.columnIndex="1" />
+                                    <Label fx:id="lblServiciosAdicionales" text="" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label fx:id="lblSubtotal" text="" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Label fx:id="lblTotal" text="" style="-fx-font-weight: bold;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </VBox>
+                        
+                        <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                           <children>
+                              <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#cancelarReserva" text="Cancelar" />
+                              <Button fx:id="btnConfirmar" mnemonicParsing="false" onAction="#confirmarReservaRapida" text="Confirmar Reserva" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+            <Tab text="Reserva Avanzada">
+               <content>
+                  <VBox spacing="15.0">
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                     <children>
+                        <HBox spacing="10.0">
+                           <children>
+                              <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label text="Cliente" />
+                                    <ComboBox fx:id="cbClienteAvanzado" promptText="Seleccione un cliente" VBox.vgrow="ALWAYS" maxWidth="Infinity" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        
+                        <TitledPane animated="true" text="Configuración de Servicios">
+                           <content>
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <HBox spacing="10.0">
+                                       <children>
+                                          <ComboBox fx:id="cbTipoServicioAvanzado" promptText="Tipo de Servicio" />
+                                          <ComboBox fx:id="cbServicioAvanzado" promptText="Servicio Específico" HBox.hgrow="ALWAYS" />
+                                          <Button fx:id="btnAgregarServicio" mnemonicParsing="false" onAction="#agregarServicioAReserva" text="Agregar" />
+                                       </children>
+                                    </HBox>
+                                    
+                                    <TableView fx:id="tblServiciosSeleccionados" VBox.vgrow="ALWAYS">
+                                       <columns>
+                                          <TableColumn fx:id="colNombreServicio" text="Servicio" />
+                                          <TableColumn fx:id="colFechaServicio" text="Fecha" />
+                                          <TableColumn fx:id="colHorarioServicio" text="Horario" />
+                                          <TableColumn fx:id="colPrecioServicio" text="Precio" />
+                                          <TableColumn fx:id="colAcciones" text="Acciones" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </TitledPane>
+                        
+                        <TitledPane animated="true" text="Complementos y Opciones">
+                           <content>
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <GridPane hgap="10.0" vgap="10.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <CheckBox fx:id="chkToallaAvanzado" mnemonicParsing="false" text="Servicio de Toalla" />
+                                          <CheckBox fx:id="chkLockerPremiumAvanzado" mnemonicParsing="false" text="Locker Premium" GridPane.columnIndex="1" />
+                                          <CheckBox fx:id="chkBebidaAvanzado" mnemonicParsing="false" text="Bebida de Cortesía" GridPane.rowIndex="1" />
+                                          <CheckBox fx:id="chkEntrenadorAvanzado" mnemonicParsing="false" text="Entrenador Personal" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </TitledPane>
+                        
+                        <TitledPane animated="true" text="Pago">
+                           <content>
+                              <GridPane hgap="10.0" vgap="10.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label text="Método de Pago:" />
+                                    <ComboBox fx:id="cbMetodoPagoAvanzado" promptText="Seleccione método de pago" GridPane.columnIndex="1" maxWidth="Infinity" />
+                                    
+                                    <Label text="Total a Pagar:" GridPane.rowIndex="1" />
+                                    <Label fx:id="lblTotalAvanzado" text="$0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                 </children>
+                              </GridPane>
+                           </content>
+                        </TitledPane>
+                        
+                        <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                           <children>
+                              <Button fx:id="btnCancelarAvanzado" mnemonicParsing="false" onAction="#cancelarReservaAvanzada" text="Cancelar" />
+                              <Button fx:id="btnConfirmarAvanzado" mnemonicParsing="false" onAction="#confirmarReservaAvanzada" text="Confirmar Reserva" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</VBox>

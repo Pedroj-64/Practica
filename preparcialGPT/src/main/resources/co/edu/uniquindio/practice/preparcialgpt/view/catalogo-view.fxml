@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="co.edu.uniquindio.practice.preparcialgpt.controller.CatalogoController">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <children>
+      <Label text="Catálogo de Servicios" style="-fx-font-weight: bold;">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      
+      <HBox spacing="10.0">
+         <children>
+            <TextField fx:id="txtBuscar" promptText="Buscar servicio..." HBox.hgrow="ALWAYS" />
+            <ComboBox fx:id="cbCategoria" promptText="Filtrar por categoría" />
+            <Button fx:id="btnBuscar" mnemonicParsing="false" onAction="#buscarServicios" text="Buscar" />
+         </children>
+      </HBox>
+      
+      <SplitPane dividerPositions="0.3" VBox.vgrow="ALWAYS">
+         <items>
+            <VBox spacing="10.0">
+               <children>
+                  <Label text="Estructura de Servicios" style="-fx-font-weight: bold;" />
+                  <TreeView fx:id="treeServicios" VBox.vgrow="ALWAYS" />
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Button fx:id="btnAgregarServicio" mnemonicParsing="false" onAction="#mostrarDialogoAgregarServicio" text="Agregar" />
+                        <Button fx:id="btnEditarServicio" mnemonicParsing="false" onAction="#editarServicioSeleccionado" text="Editar" />
+                        <Button fx:id="btnEliminarServicio" mnemonicParsing="false" onAction="#eliminarServicioSeleccionado" text="Eliminar" />
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+            
+            <VBox spacing="10.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <Label fx:id="lblDetalleServicio" text="Detalles del Servicio" style="-fx-font-weight: bold;">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  
+                  <GridPane hgap="10.0" vgap="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="150.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" prefWidth="300.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Nombre:" />
+                        <Label text="Tipo:" GridPane.rowIndex="1" />
+                        <Label text="Descripción:" GridPane.rowIndex="2" />
+                        <Label text="Precio:" GridPane.rowIndex="3" />
+                        <Label text="Capacidad:" GridPane.rowIndex="4" />
+                        
+                        <Label fx:id="lblNombre" text="" GridPane.columnIndex="1" />
+                        <Label fx:id="lblTipo" text="" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="lblDescripcion" text="" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="lblPrecio" text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="lblCapacidad" text="" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                     </children>
+                  </GridPane>
+                  
+                  <Separator />
+                  
+                  <VBox spacing="5.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label text="Horarios Disponibles:" style="-fx-font-weight: bold;" />
+                        <TableView fx:id="tblHorarios" VBox.vgrow="ALWAYS">
+                           <columns>
+                              <TableColumn fx:id="colDia" text="Día" />
+                              <TableColumn fx:id="colHoraInicio" text="Hora Inicio" />
+                              <TableColumn fx:id="colHoraFin" text="Hora Fin" />
+                              <TableColumn fx:id="colDisponibilidad" text="Disponibilidad" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
+                  
+                  <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                     <children>
+                        <Button fx:id="btnReservar" mnemonicParsing="false" onAction="#reservarServicio" text="Reservar" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </items>
+      </SplitPane>
+   </children>
+</VBox>
