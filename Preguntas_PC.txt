@@ -1,0 +1,17 @@
+Abstracción: 
+
+¿Qué se solicita finalmente? (problema)
+¿Qué información es relevante dado el problema anterior?
+¿Cómo se agrupa la información relevante?
+¿Qué funcionalidades se solicitan finalmente?
+Descomposición: 
+
+¿Cómo se distribuyen las funcionalidades?
+¿Qué debo hacer para probar las funcionalidades?
+Reconocimiento de patrones:
+
+¿Qué puedo reutilizar de la solución de otros problemas?
+Codificación:
+
+¿Cómo pruebo la solución en java?
+¿Cómo escribo la solución en java?
