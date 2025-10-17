@@ -13,4 +13,6 @@ module co.edu.uniquindio.practice.preparcial {
 
     opens co.edu.uniquindio.practice.preparcial to javafx.fxml;
     exports co.edu.uniquindio.practice.preparcial;
+    exports co.edu.uniquindio.practice.preparcial.model;
+    opens co.edu.uniquindio.practice.preparcial.model to javafx.fxml;
 }
